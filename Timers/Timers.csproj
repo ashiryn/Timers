@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <LangVersion>latestmajor</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>FluffyVoid.Timers</AssemblyName>
+        <RootNamespace>FluffyVoid.Timers</RootNamespace>
+        <PackageId>FluffyVoid.Timers</PackageId>
+        <Title>Timers</Title>
+        <Authors>FluffyVoid</Authors>
+        <Description>C# timer frameworks that allows for creating timers and managing a global time instance.</Description>
+        <Company>FluffyVoid</Company>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <FileVersion>1.0.0</FileVersion>
+        <RepositoryUrl>https://github.com/ashiryn/Timers</RepositoryUrl>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\Timers.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DocumentationFile>bin\Release\Timers.xml</DocumentationFile>
+    </PropertyGroup>
+
+</Project>
