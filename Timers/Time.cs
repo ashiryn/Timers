@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace FluffyVoid.Game;
+namespace FluffyVoid.Timers;
 
 /// <summary>
 ///     Global time keeper for calculating Delta Time
@@ -11,36 +11,49 @@ public class Time
     ///     Singleton instance for the time class
     /// </summary>
     private static Time? s_instance;
+
     /// <summary>
     ///     Stopwatch to use for calculating the delta time
     /// </summary>
-    private readonly Stopwatch _clock = new Stopwatch();
+    private readonly Stopwatch _clock = new();
+
     /// <summary>
     ///     The current frames delta time
     /// </summary>
     private double _deltaTime;
+
     /// <summary>
-    ///     The desired framerate the application is attempting to maintain
+    ///     The desired frame rate the application is attempting to maintain
     /// </summary>
-    private double _desiredFramerate = 1.0 / 60.0;
+    private int _desiredFrameRate = 60;
+
+    /// <summary>
+    ///     The calculated frame time to meet the desired frame rate
+    /// </summary>
+    private double _desiredFrameRateTime = 1.0 / 60.0;
+
     /// <summary>
     ///     The amount of time that has elapsed to calculate FPS
     /// </summary>
     private float _elapsed;
+
     /// <summary>
     ///     The number of frames that have currently been run
     /// </summary>
     private int _frames;
+
     /// <summary>
     ///     Whether Time is running or not
     /// </summary>
     private bool _isRunning;
+
     /// <summary>
     ///     The previous frames elapsed ticks
     /// </summary>
     private long _lastElapsedMilliseconds;
+
     /// <summary>
-    ///     The amount of time the last frame was delayed to meet the desired framerate
+    ///     The amount of time the last frame was delayed to meet the desired frame rate
     /// </summary>
     private int _previousFrameDelay;
 
@@ -48,14 +61,36 @@ public class Time
     ///     The current delta time
     /// </summary>
     public static float DeltaTime => (float)Instance._deltaTime;
+
+    /// <summary>
+    ///     The desired frame rate the application is attempting to maintain
+    /// </summary>
+    public static int DesiredFrameRate
+    {
+        set
+        {
+            if (value < 0)
+            {
+                Instance._desiredFrameRate = 30;
+                Instance._desiredFrameRateTime = 1.0 / Instance._desiredFrameRate;
+                return;
+            }
+
+            Instance._desiredFrameRate = value;
+            Instance._desiredFrameRateTime = 1.0 / Instance._desiredFrameRate;
+        }
+    }
+
     /// <summary>
     ///     The current Frames per Second the application is running at
     /// </summary>
     public static int FPS { get; private set; }
+
     /// <summary>
     ///     Whether Time is running or not
     /// </summary>
-    public bool IsRunning => Instance._isRunning;
+    public static bool IsRunning => Instance._isRunning;
+
     /// <summary>
     ///     Singleton instance for the time class
     /// </summary>
@@ -71,21 +106,19 @@ public class Time
     /// <summary>
     ///     Calculates the amount of milliseconds to wait in order to maintain a locked FPS
     /// </summary>
-    /// <param name="targetFramerate">The target framerate to lock to</param>
     /// <returns>The amount of milliseconds to wait</returns>
-    public static int Delay(double targetFramerate)
+    public static int Delay()
     {
-        if (!(targetFramerate > 0.0) || !Instance._isRunning)
+        if (!Instance._isRunning)
         {
             return 0;
         }
 
-        Instance._desiredFramerate = 1.0 / targetFramerate;
         double previousFrameDelayInSeconds =
             Instance._previousFrameDelay * 0.001;
 
         double frameDelayAdjustment =
-            Instance._desiredFramerate - Instance._deltaTime;
+            Instance._desiredFrameRateTime - Instance._deltaTime;
 
         double currentFrameDelay =
             previousFrameDelayInSeconds + frameDelayAdjustment;
@@ -94,6 +127,7 @@ public class Time
         Instance._previousFrameDelay = result;
         return result;
     }
+
     /// <summary>
     ///     Resets the time to get it back into its default state
     /// </summary>
@@ -104,6 +138,7 @@ public class Time
         Instance._previousFrameDelay = 0;
         Instance._lastElapsedMilliseconds = 0;
     }
+
     /// <summary>
     ///     Signals the time to calculate delta time and FPS
     /// </summary>
@@ -130,6 +165,7 @@ public class Time
 
         ++Instance._frames;
     }
+
     /// <summary>
     ///     Starts the time ticking
     /// </summary>
@@ -138,6 +174,7 @@ public class Time
         Instance._clock.Start();
         Instance._isRunning = true;
     }
+
     /// <summary>
     ///     Stops the time from ticking
     /// </summary>
