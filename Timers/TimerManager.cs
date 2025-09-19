@@ -8,11 +8,11 @@ public static class TimerManager
     /// <summary>
     ///     Lock object for basic locking operations
     /// </summary>
-    private static readonly Lock LockObject = new Lock();
+    private static readonly object LockObject = new object();
     /// <summary>
     ///     Lock object for queue of timers to destroy
     /// </summary>
-    private static readonly Lock QueueLock = new Lock();
+    private static readonly object QueueLock = new object();
     /// <summary>
     ///     List of timers currently registered
     /// </summary>
