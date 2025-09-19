@@ -12,7 +12,7 @@
         <Authors>FluffyVoid</Authors>
         <Description>C# timer frameworks that allows for creating timers and managing a global time instance.</Description>
         <Company>FluffyVoid</Company>
-        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1</AssemblyVersion>
         <FileVersion>1.0.0</FileVersion>
         <RepositoryUrl>https://github.com/ashiryn/Timers</RepositoryUrl>
     </PropertyGroup>
