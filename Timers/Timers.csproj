@@ -13,16 +13,17 @@
         <Description>C# timer frameworks that allows for creating timers and managing a global time instance.</Description>
         <Company>FluffyVoid</Company>
         <AssemblyVersion>1.0.1</AssemblyVersion>
-        <FileVersion>1.0.0</FileVersion>
+        <FileVersion>1.0.1</FileVersion>
         <RepositoryUrl>https://github.com/ashiryn/Timers</RepositoryUrl>
+        <Version>1.0.1</Version>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <DocumentationFile>bin\Debug\Timers.xml</DocumentationFile>
+        <DocumentationFile>bin\Debug\Timers.xml</DocumentationFile>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <DocumentationFile>bin\Release\Timers.xml</DocumentationFile>
+        <DocumentationFile>bin\Release\Timers.xml</DocumentationFile>
     </PropertyGroup>
 
 </Project>
