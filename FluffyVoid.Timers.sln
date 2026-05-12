@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timers", "Timers\Timers.csproj", "{BFCEB9FD-553A-47CA-9282-FF25DB3AB234}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluffyVoid.Timers", "FluffyVoid.Timers\FluffyVoid.Timers.csproj", "{BFCEB9FD-553A-47CA-9282-FF25DB3AB234}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
