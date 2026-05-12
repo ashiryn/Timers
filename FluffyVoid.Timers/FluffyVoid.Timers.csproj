@@ -12,10 +12,10 @@
         <Authors>FluffyVoid</Authors>
         <Description>C# timer frameworks that allows for creating timers and managing a global time instance.</Description>
         <Company>FluffyVoid</Company>
-        <AssemblyVersion>1.0.2</AssemblyVersion>
-        <FileVersion>1.0.2</FileVersion>
+        <AssemblyVersion>1.0.3</AssemblyVersion>
+        <FileVersion>1.0.3</FileVersion>
         <RepositoryUrl>https://github.com/ashiryn/Timers</RepositoryUrl>
-        <Version>1.0.2</Version>
+        <Version>1.0.3</Version>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
